@@ -609,13 +609,23 @@ function MainFeature({ activeView }) {
                             key={cost.id}
                             className="absolute inset-0 w-full h-full rounded-full overflow-hidden"
                             style={{
-                              clipPath: `polygon(50% 50%, 50% 0%, ${endDeg <= 90 
-                                ? `${50 + 50 * Math.tan(endDeg * Math.PI / 180)}% 0` 
-                                : endDeg <= 180 
-                                  ? `100% 0, 100% ${50 - 50 / Math.tan(endDeg * Math.PI / 180)}%` 
-                                  : endDeg <= 270 
-                                    ? `100% 100%, ${50 - 50 * Math.tan(endDeg * Math.PI / 180)}% 100%` 
-                                    : `0 100%, 0 ${50 + 50 / Math.tan(endDeg * Math.PI / 180)}%`})`
+                              clipPath: (() => {
+                                let endPoint = "";
+                                if (endDeg <= 90) {
+                                  const x = 50 + 50 * Math.tan(endDeg * Math.PI / 180);
+                                  endPoint = `${x}% 0`;
+                                } else if (endDeg <= 180) {
+                                  const y = 50 - 50 / Math.tan(endDeg * Math.PI / 180);
+                                  endPoint = `100% 0, 100% ${y}%`;
+                                } else if (endDeg <= 270) {
+                                  const x = 50 - 50 * Math.tan(endDeg * Math.PI / 180);
+                                  endPoint = `100% 100%, ${x}% 100%`;
+                                } else {
+                                  const y = 50 + 50 / Math.tan(endDeg * Math.PI / 180);
+                                  endPoint = `0 100%, 0 ${y}%`;
+                                }
+                                return `polygon(50% 50%, 50% 0%, ${endPoint})`;
+                              })()
                             }}
                           >
                             <div 

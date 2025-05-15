@@ -18,6 +18,7 @@ const RefreshCw = getIcon('RefreshCw');
 const CircleOff = getIcon('CircleOff');
 const CircleCheck = getIcon('CircleCheck');
 const Clock = getIcon('Clock');
+const Package = getIcon('Package');
 const Info = getIcon('Info');
 
 function MainFeature({ activeView }) {

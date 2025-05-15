@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import MainFeature from '../components/MainFeature';
 import getIcon from '../utils/iconUtils';
 
@@ -16,6 +17,7 @@ const Moon = getIcon('Moon');
 const Sun = getIcon('Sun');
 const Menu = getIcon('Menu');
 const X = getIcon('X');
+const Settings = getIcon('Settings');
 
 function Home({ darkMode, toggleDarkMode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -43,42 +45,42 @@ function Home({ darkMode, toggleDarkMode }) {
                 onClick={() => setActiveView('overview')}
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                   activeView === 'overview' 
-                    ? 'bg-primary/10 text-primary dark:bg-primary/20' 
-                    : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
+                  ? 'bg-primary/10 text-primary dark:bg-primary/20' 
+                  : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
                 }`}
               >
                 Overview
               </button>
-              <button 
-                onClick={() => setActiveView('finance')}
+              <Link 
+                to="/finance"
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                   activeView === 'finance' 
-                    ? 'bg-primary/10 text-primary dark:bg-primary/20' 
-                    : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
+                  ? 'bg-primary/10 text-primary dark:bg-primary/20' 
+                  : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
                 }`}
               >
                 Finance
-              </button>
-              <button 
-                onClick={() => setActiveView('projects')}
+              </Link>
+              <Link 
+                to="/projects"
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                   activeView === 'projects' 
-                    ? 'bg-primary/10 text-primary dark:bg-primary/20' 
-                    : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
+                  ? 'bg-primary/10 text-primary dark:bg-primary/20' 
+                  : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
                 }`}
               >
                 Projects
-              </button>
-              <button 
-                onClick={() => setActiveView('resources')}
+              </Link>
+              <Link 
+                to="/resources"
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                   activeView === 'resources' 
-                    ? 'bg-primary/10 text-primary dark:bg-primary/20' 
-                    : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
+                  ? 'bg-primary/10 text-primary dark:bg-primary/20' 
+                  : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
                 }`}
               >
                 Resources
-              </button>
+              </Link>
             </nav>
             
             <div className="flex items-center gap-3">
@@ -91,6 +93,12 @@ function Home({ darkMode, toggleDarkMode }) {
               >
                 {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
+              <Link 
+                to="/settings"
+                className="w-8 h-8 flex items-center justify-center rounded-full text-surface-600 hover:bg-surface-100 dark:text-surface-400 dark:hover:bg-surface-700"
+              >
+                <Settings className="w-5 h-5" />
+              </Link>
               <div className="w-9 h-9 rounded-full bg-accent text-white flex items-center justify-center font-medium">
                 JD
               </div>
@@ -132,45 +140,46 @@ function Home({ darkMode, toggleDarkMode }) {
               >
                 Overview
               </button>
-              <button 
-                onClick={() => {
-                  setActiveView('finance');
-                  setMobileMenuOpen(false);
-                }}
+              <Link 
+                to="/finance"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                   activeView === 'finance' 
-                    ? 'bg-primary/10 text-primary dark:bg-primary/20' 
-                    : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
+                  ? 'bg-primary/10 text-primary dark:bg-primary/20' 
+                  : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
                 }`}
               >
                 Finance
-              </button>
-              <button 
-                onClick={() => {
-                  setActiveView('projects');
-                  setMobileMenuOpen(false);
-                }}
+              </Link>
+              <Link 
+                to="/projects"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                   activeView === 'projects' 
-                    ? 'bg-primary/10 text-primary dark:bg-primary/20' 
-                    : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
+                  ? 'bg-primary/10 text-primary dark:bg-primary/20' 
+                  : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
                 }`}
               >
                 Projects
-              </button>
-              <button 
-                onClick={() => {
-                  setActiveView('resources');
-                  setMobileMenuOpen(false);
-                }}
+              </Link>
+              <Link 
+                to="/resources"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                   activeView === 'resources' 
-                    ? 'bg-primary/10 text-primary dark:bg-primary/20' 
-                    : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
+                  ? 'bg-primary/10 text-primary dark:bg-primary/20' 
+                  : 'text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100'
                 }`}
               >
                 Resources
-              </button>
+              </Link>
+              <Link 
+                to="/settings"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2 text-sm font-medium rounded-lg transition-colors text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-surface-100"
+              >
+                Settings
+              </Link>
             </nav>
             
             <div className="flex items-center justify-between">

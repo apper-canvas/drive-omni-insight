@@ -610,29 +610,31 @@ function MainFeature({ activeView }) {
                             className="absolute inset-0 w-full h-full rounded-full overflow-hidden"
                             style={{
                               clipPath: (() => {
-                                let endPoint = '';
-                                if (endDeg <= 90) {
-                                  const x = 50 + 50 * Math.tan(endDeg * Math.PI / 180);
-                                  endPoint = `${x}% 0%`;
-                                } else if (endDeg <= 180) {
-                                  const y = 50 - 50 / Math.tan(endDeg * Math.PI / 180);
-                                  endPoint = `100% 0%, 100% ${y}%`;
-                                } else if (endDeg <= 270) {
-                                  const x = 50 - 50 * Math.tan(endDeg * Math.PI / 180);
-                                  endPoint = `100% 100%, ${x}% 100%`;
-                                } else {
-                                  const y = 50 + 50 / Math.tan(endDeg * Math.PI / 180);
-                                  endPoint = `0% 100%, 0% ${y}%`;
-                                }
+                                const x1 = 50;
+                                const y1 = 50;
+                                const r = 50;
                                 
-                                // Construct the full polygon string
-                                let polygonString;
+                                // Calculate coordinates for the end point of the segment
+                                let endPointX, endPointY;
+                                
+                                // Convert angle to radians and calculate point
+                                const endRad = (endDeg - 90) * (Math.PI / 180);
+                                endPointX = x1 + r * Math.cos(endRad);
+                                endPointY = y1 + r * Math.sin(endRad);
+                                
+                                let polygonPoints = '';
+                                
                                 if (endDeg <= 90) {
-                                  polygonString = `polygon(50% 50%, 50% 0%, ${endPoint})`;
+                                  polygonPoints = `50% 50%, 50% 0%, ${endPointX}% ${endPointY}%`;
+                                } else if (endDeg <= 180) {
+                                  polygonPoints = `50% 50%, 50% 0%, 100% 0%, ${endPointX}% ${endPointY}%`;
+                                } else if (endDeg <= 270) {
+                                  polygonPoints = `50% 50%, 50% 0%, 100% 0%, 100% 100%, ${endPointX}% ${endPointY}%`;
                                 } else {
-                                  polygonString = `polygon(50% 50%, 50% 0%, ${endPoint})`;
+                                  polygonPoints = `50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, ${endPointX}% ${endPointY}%`;
                                 }
-                                return polygonString;
+
+                                return `polygon(${polygonPoints})`;
                               })()
                             }}
                           >

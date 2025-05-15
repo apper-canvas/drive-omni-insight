@@ -212,7 +212,7 @@ function Home({ darkMode, toggleDarkMode }) {
               {activeView === 'resources' && 'Resource Management'}
             </h1>
             <p className="text-surface-600 dark:text-surface-400">
-              {activeView === 'overview' && 'Complete visibility into your organization's performance'}
+              {activeView === 'overview' && 'Complete visibility into your organization\'s performance'}
               {activeView === 'finance' && 'Track revenue, expenses, and financial health'}
               {activeView === 'projects' && 'Monitor project status, timelines, and deliverables'}
               {activeView === 'resources' && 'Optimize resource allocation and utilization'}

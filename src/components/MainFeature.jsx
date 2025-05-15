@@ -610,21 +610,29 @@ function MainFeature({ activeView }) {
                             className="absolute inset-0 w-full h-full rounded-full overflow-hidden"
                             style={{
                               clipPath: (() => {
-                                let endPoint = "";
+                                let endPoint = '';
                                 if (endDeg <= 90) {
                                   const x = 50 + 50 * Math.tan(endDeg * Math.PI / 180);
-                                  endPoint = `${x}% 0`;
+                                  endPoint = `${x}% 0%`;
                                 } else if (endDeg <= 180) {
                                   const y = 50 - 50 / Math.tan(endDeg * Math.PI / 180);
-                                  endPoint = `100% 0, 100% ${y}%`;
+                                  endPoint = `100% 0%, 100% ${y}%`;
                                 } else if (endDeg <= 270) {
                                   const x = 50 - 50 * Math.tan(endDeg * Math.PI / 180);
                                   endPoint = `100% 100%, ${x}% 100%`;
                                 } else {
                                   const y = 50 + 50 / Math.tan(endDeg * Math.PI / 180);
-                                  endPoint = `0 100%, 0 ${y}%`;
+                                  endPoint = `0% 100%, 0% ${y}%`;
                                 }
-                                return `polygon(50% 50%, 50% 0%, ${endPoint})`;
+                                
+                                // Construct the full polygon string
+                                let polygonString;
+                                if (endDeg <= 90) {
+                                  polygonString = `polygon(50% 50%, 50% 0%, ${endPoint})`;
+                                } else {
+                                  polygonString = `polygon(50% 50%, 50% 0%, ${endPoint})`;
+                                }
+                                return polygonString;
                               })()
                             }}
                           >

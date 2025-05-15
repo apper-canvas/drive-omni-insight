@@ -617,7 +617,7 @@ function MainFeature({ activeView }) {
                                 const r = 50;
                                 
                                 // Calculate coordinates for the end point of the segment
-                                let endPointX, endPointY;
+                               let endPointX, endPointY;
                                 
                                 // Convert angle to radians and calculate point
                                 const endRad = (endDeg - 90) * (Math.PI / 180);
@@ -627,16 +627,16 @@ function MainFeature({ activeView }) {
                                 let polygonPoints = '';
                                 
                                 if (endDeg <= 90) {
-                                  polygonPoints = `50% 50%, 50% 0%, ${endPointX}% ${endPointY}%`;
+                                  polygonPoints = `50% 50%, 50% 0%, ${endPointX.toFixed(1)}% ${endPointY.toFixed(1)}%`;
                                 } else if (endDeg <= 180) {
-                                  polygonPoints = `50% 50%, 50% 0%, 100% 0%, ${endPointX}% ${endPointY}%`;
+                                  polygonPoints = `50% 50%, 50% 0%, 100% 0%, ${endPointX.toFixed(1)}% ${endPointY.toFixed(1)}%`;
                                 } else if (endDeg <= 270) {
-                                  polygonPoints = `50% 50%, 50% 0%, 100% 0%, 100% 100%, ${endPointX}% ${endPointY}%`;
+                                  polygonPoints = `50% 50%, 50% 0%, 100% 0%, 100% 100%, ${endPointX.toFixed(1)}% ${endPointY.toFixed(1)}%`;
                                 } else {
-                                  polygonPoints = `50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, ${endPointX}% ${endPointY}%`;
+                                  polygonPoints = `50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, ${endPointX.toFixed(1)}% ${endPointY.toFixed(1)}%`;
                                 }
 
-                                return `polygon(${polygonPoints})`;
+                               return `polygon(${polygonPoints})`;
                               })()
                             }}
                           >

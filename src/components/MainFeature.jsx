@@ -612,10 +612,10 @@ function MainFeature({ activeView }) {
                               clipPath: `polygon(50% 50%, 50% 0%, ${endDeg <= 90 
                                 ? `${50 + 50 * Math.tan(endDeg * Math.PI / 180)}% 0` 
                                 : endDeg <= 180 
-                                  ? '100% 0, 100% ${50 - 50 / Math.tan(endDeg * Math.PI / 180)}%' 
+                                  ? `100% 0, 100% ${50 - 50 / Math.tan(endDeg * Math.PI / 180)}%` 
                                   : endDeg <= 270 
-                                    ? '100% 100%, ${50 - 50 * Math.tan(endDeg * Math.PI / 180)}% 100%' 
-                                    : '0 100%, 0 ${50 + 50 / Math.tan(endDeg * Math.PI / 180)}%'})`
+                                    ? `100% 100%, ${50 - 50 * Math.tan(endDeg * Math.PI / 180)}% 100%` 
+                                    : `0 100%, 0 ${50 + 50 / Math.tan(endDeg * Math.PI / 180)}%`})`
                             }}
                           >
                             <div 
